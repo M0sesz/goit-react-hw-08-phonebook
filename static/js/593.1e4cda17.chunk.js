@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[593],{4593:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var r=n(3329);function c(){return(0,r.jsx)("div",{children:(0,r.jsxs)("h1",{children:["Welcome to the contact book"," ",(0,r.jsx)("span",{role:"img","aria-label":"Greeting icon",children:"\ud83d\udc81\u200d\u2640\ufe0f"})]})})}}}]);
+//# sourceMappingURL=593.1e4cda17.chunk.js.map
