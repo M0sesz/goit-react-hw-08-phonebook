@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts, deleteContact } from '../store/contactsSlice';
+import {
+  ContactListContainer,
+  ContactItem,
+  ContactName,
+  DeleteButton,
+} from './Form.styled';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -15,22 +21,30 @@ const ContactList = () => {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const handleDeleteContact = contactId => {
-    dispatch(deleteContact(contactId));
+  const handleDeleteContact = async contactId => {
+    try {
+      await dispatch(deleteContact(contactId));
+      dispatch(fetchContacts());
+    } catch (error) {
+      console.error('Error deleting contact:', error);
+    }
   };
 
   return (
-    <ul>
-      {filteredContacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name} - {contact.phone}
-          <button onClick={() => handleDeleteContact(contact.id)}>
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <ContactListContainer>
+      <ul>
+        {filteredContacts.map(contact => (
+          <ContactItem key={contact.id}>
+            <ContactName>
+              {contact.name} - {contact.number}
+            </ContactName>
+            <DeleteButton onClick={() => handleDeleteContact(contact.id)}>
+              Delete
+            </DeleteButton>
+          </ContactItem>
+        ))}
+      </ul>
+    </ContactListContainer>
   );
 };
-
 export default ContactList;

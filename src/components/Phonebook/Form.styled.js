@@ -54,3 +54,37 @@ export const FilterContainer = styled.div`
     border-radius: 3px;
   }
 `;
+
+export const ContactListContainer = styled.div`
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const ContactItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+export const ContactName = styled.span`
+  font-weight: bold;
+`;
+
+export const DeleteButton = styled.button`
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+`;

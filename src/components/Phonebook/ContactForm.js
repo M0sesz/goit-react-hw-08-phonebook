@@ -13,7 +13,7 @@ import {
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const [contact, setContact] = useState({ name: '', phone: '' });
+  const [contact, setContact] = useState({ name: '', number: '' });
   const contacts = useSelector(state => state.contacts.items);
 
   const handleChange = e => {
@@ -24,7 +24,7 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!contact.name.trim() || !contact.phone.trim()) {
+    if (!contact.name.trim() || !contact.number.trim()) {
       toast.error('Please fill in all fields.');
       return;
     }
@@ -33,8 +33,8 @@ const ContactForm = () => {
       existingContact => existingContact.name === contact.name
     );
 
-    if (!/^\d+$/.test(contact.phone)) {
-      toast.error('Phone can only contain digits.');
+    if (!/^\d+$/.test(contact.number)) {
+      toast.error('Number can only contain digits.');
       return;
     }
 
@@ -45,7 +45,7 @@ const ContactForm = () => {
 
     dispatch(addContact(contact))
       .then(() => {
-        setContact({ name: '', phone: '' });
+        setContact({ name: '', number: '' });
       })
       .catch(err => {
         toast.error(`Error: ${err.message}`);
@@ -65,11 +65,11 @@ const ContactForm = () => {
           />
         </Label>
         <Label>
-          Phone:
+          Number:
           <Input
             type="text"
-            name="phone"
-            value={contact.phone}
+            name="number"
+            value={contact.number}
             onChange={handleChange}
           />
         </Label>
