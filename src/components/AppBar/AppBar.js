@@ -15,11 +15,6 @@ export const AppBar = () => {
         <Navigation />
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
         {!isLoggedIn && <></>}
-        {isLoggedIn && (
-          <StyledButton onClick={() => console.log('Logout clicked')}>
-            Logout
-          </StyledButton>
-        )}
       </StyledNav>
     </StyledHeader>
   );

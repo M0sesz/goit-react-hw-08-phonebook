@@ -13,7 +13,7 @@ const Filter = () => {
 
   return (
     <FilterContainer>
-      s<label htmlFor="filter">Filter contacts by name: </label>
+      <label htmlFor="filter">Filter contacts by name: </label>
       <input
         type="text"
         id="filter"

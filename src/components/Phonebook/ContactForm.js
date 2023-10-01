@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../store/contactsSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  FormContainer,
+  Label,
+  Input,
+  Button,
+  ToastContainerStyled,
+} from './Form.styled';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -19,11 +26,6 @@ const ContactForm = () => {
 
     if (!contact.name.trim() || !contact.phone.trim()) {
       toast.error('Please fill in all fields.');
-      return;
-    }
-
-    if (!/^[a-zA-Z]+$/.test(contact.name)) {
-      toast.error('Name can only contain letters.');
       return;
     }
 
@@ -51,28 +53,30 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={contact.name}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Phone:
-        <input
-          type="text"
-          name="phone"
-          value={contact.phone}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Add Contact</button>
-      <ToastContainer />{' '}
-    </form>
+    <FormContainer>
+      <form onSubmit={handleSubmit}>
+        <Label>
+          Name:
+          <Input
+            type="text"
+            name="name"
+            value={contact.name}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Phone:
+          <Input
+            type="text"
+            name="phone"
+            value={contact.phone}
+            onChange={handleChange}
+          />
+        </Label>
+        <Button type="submit">Add Contact</Button>
+      </form>
+      <ToastContainerStyled />
+    </FormContainer>
   );
 };
 

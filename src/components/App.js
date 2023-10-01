@@ -4,9 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 
 import { refresh } from './redux/auth/authOperations';
-
 import { useAuth } from './hooks/useAuth';
-
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
@@ -30,17 +28,22 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-
           <Route
             path="/register"
             element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
             }
           />
           <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
             }
           />
           <Route
